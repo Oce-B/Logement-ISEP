@@ -1,19 +1,24 @@
-// listing.component.ts
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Listing } from '../listing.interface'; // Import the Listing interface
-import { MOCK_LISTINGS } from '../mock-listings'; // Import the mock listings
+import { Listing } from '../listing.interface';
+import { MOCK_LISTINGS } from '../mock-listings';
+import { HeaderComponent } from '../header/header.component';
+import { HiddenListingsService } from '../hiden-listings.service';
 
 @Component({
   selector: 'app-listing',
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss'],
+  standalone: true,
+  imports: [HeaderComponent],
 })
 export class ListingComponent implements OnInit {
   listing!: Listing;
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private hiddenListingsService: HiddenListingsService
+  ) {}
 
   ngOnInit(): void {
     const id = +this.route.snapshot.paramMap.get('id')!; // Get the listing ID from the route parameter
@@ -27,5 +32,10 @@ export class ListingComponent implements OnInit {
   }
 
   saveListing(): void {}
-  hideListing(): void {}
+  hideListing(): void {
+    if (this.listing) {
+      this.hiddenListingsService.hideListing(this.listing.id);
+      console.log(`Listing with ID ${this.listing.id} hidden.`);
+    }
+  }
 }

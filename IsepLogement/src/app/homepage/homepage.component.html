@@ -3,7 +3,7 @@
 yo
 
 <div class="listing-cards">
-  @for(listing of this.listings; track $index){
+  @for(listing of this.visibleListings; track $index){
   <h3>{{ listing.title }}</h3>
   <p>{{ listing.description.substring(0, 50) }}...</p>
   <!-- Display the start of the description -->
