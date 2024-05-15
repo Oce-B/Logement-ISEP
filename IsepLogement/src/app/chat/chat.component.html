@@ -1,4 +1,5 @@
-<div class="sender--name">Lorem Ipsum</div>
+<app-header></app-header>
+<div class="sender--name">{{ this.sender }}</div>
 
 <div class="message-containe">
   @for(message of this.messages; track $index){ @if(message.user ===

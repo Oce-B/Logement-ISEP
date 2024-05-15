@@ -1,14 +1,16 @@
 import { Component } from '@angular/core';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-chat',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './chat.component.html',
   styleUrl: './chat.component.scss',
 })
 export class ChatComponent {
   currentUser: string = 'User 1';
+  sender: string = 'User 2';
   messages: { user: string; content: string }[] = [];
 
   ngOnInit() {

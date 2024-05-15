@@ -1,1 +1,13 @@
-<p>homepage works!</p>
+<app-header></app-header>
+
+yo
+
+<div class="listing-cards">
+  @for(listing of this.listings; track $index){
+  <h3>{{ listing.title }}</h3>
+  <p>{{ listing.description.substring(0, 50) }}...</p>
+  <!-- Display the start of the description -->
+  <!-- Add more information as needed, such as city -->
+  <a routerLink="/listing/{{ listing.id }}">View Details</a>
+  <!-- Link to listing detail page -->}
+</div>
