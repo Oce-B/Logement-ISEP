@@ -1,0 +1,23 @@
+<div class="sender--name">Lorem Ipsum</div>
+
+<div class="message-containe">
+  @for(message of this.messages; track $index){ @if(message.user ===
+  this.currentUser){
+
+  <div class="message message--sent">
+    <p>{{ message.content }}</p>
+  </div>
+  } @else{
+  <div class="message message--received">
+    <p>{{ message.content }}</p>
+  </div>
+
+  }
+  <div class="clear"></div>
+  }
+</div>
+
+<div class="input-container">
+  <input type="text" #messageInput placeholder="Type your message..." />
+  <button (click)="sendMessage(messageInput.value)">Send</button>
+</div>
