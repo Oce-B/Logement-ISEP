@@ -72,3 +72,22 @@ export const MOCK_LISTINGS: Listing[] = [
     postalCode: '78000',
   },
 ];
+export const MOCK_SAVED_LISTINGS: Listing[] = [
+  {
+    id: 4,
+    pictures: [
+      'https://example.com/image7.jpg',
+      'https://example.com/image8.jpg',
+    ],
+    title: 'Spacious Villa with Pool',
+    exclusiveOffer: false,
+    author: 'Michael Brown',
+    description:
+      'Luxurious villa with ample space and a private swimming pool...',
+    roommates: [],
+    numberOfRooms: 6,
+    surface: 300,
+    city: 'Versailles',
+    postalCode: '78000',
+  },
+];
