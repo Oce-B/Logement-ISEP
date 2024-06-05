@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { Listing } from '../listing.interface';
 
 @Component({
   selector: 'app-listing-card',
@@ -9,5 +10,5 @@ import { RouterLink } from '@angular/router';
   styleUrl: './listing-card.component.scss',
 })
 export class ListingCardComponent {
-  @Input() listing: any;
+  @Input() listing!: Listing;
 }

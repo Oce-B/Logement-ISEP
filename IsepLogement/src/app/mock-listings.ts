@@ -1,4 +1,4 @@
-// mock-listings.ts
+
 
 import { Listing } from './listing.interface';
 
