@@ -1,0 +1,7 @@
+<app-header></app-header>
+
+@for(chat of this.chats; track $index){
+
+<app-chat-card [chat]="chat"></app-chat-card>
+
+}

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-
+import { Chat, Message } from '../chat.interface';
+import { ActivatedRoute } from '@angular/router';
+import { MOCK_CHATS } from '../mock-messages';
 @Component({
   selector: 'app-chat',
   standalone: true,
@@ -9,21 +11,28 @@ import { HeaderComponent } from '../header/header.component';
   styleUrl: './chat.component.scss',
 })
 export class ChatComponent {
-  currentUser: string = 'User 1';
-  sender: string = 'User 2';
-  messages: { user: string; content: string }[] = [];
+  chat!: Chat;
+  currentUser: string = 'User1';
+  messages?: Message[];
+
+  constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    // Here you can fetch the messages from a backend service
-    this.messages = [
-      { user: 'User 1', content: 'Hello' },
-      { user: 'User 2', content: 'Hi' },
-    ];
-    console.log(this.messages);
+    const id = +this.route.snapshot.paramMap.get('id')!; // Get the listing ID from the route parameter
+
+    for (var chat of MOCK_CHATS) {
+      if (chat.id === id) {
+        this.chat = chat;
+        this.messages = chat.messages;
+      }
+    }
+    console.log(this.chat);
+    // this.messages = this.chat.messages;
   }
+
   sendMessage(message: string) {
     if (message.trim() !== '') {
-      this.messages.push({ user: this.currentUser, content: message });
+      this.messages!.push({ user: this.currentUser, content: message });
       // Here you can also send the message to a backend service to save it
     }
     message = '';
