@@ -1,0 +1,11 @@
+<app-header></app-header>
+<app-search (searchChange)="onSearch($event)"></app-search>
+<div class="listing-cards">
+  @if(!searchTerm){ @for(listing of this.visibleListings; track $index){
+  <app-listing-card [listing]="listing"></app-listing-card>
+
+  }} @else { @for(listing of this.getfilteredListings(); track $index){
+  <app-listing-card [listing]="listing"></app-listing-card>
+
+  }}
+</div>

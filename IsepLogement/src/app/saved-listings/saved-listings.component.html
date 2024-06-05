@@ -1,0 +1,5 @@
+<app-header></app-header>
+
+@for(listing of this.savedListings; track $index){
+<app-listing-card [listing]="listing"></app-listing-card>
+}
