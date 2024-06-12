@@ -21,13 +21,11 @@ export class ListingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const id = +this.route.snapshot.paramMap.get('id')!; // Get the listing ID from the route parameter
+    const id = +this.route.snapshot.paramMap.get('id')!;
     const foundListing = MOCK_LISTINGS.find((listing) => listing.id === id);
     if (foundListing) {
       this.listing = foundListing;
     } else {
-      // Handle case where listing is not found
-      console.error(`Listing with ID ${id} not found.`);
     }
   }
 

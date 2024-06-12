@@ -1,1 +1,17 @@
-<p>header works!</p>
+<header class="header">
+  <div class="logo">
+    <img src="assets/smallLogo.svg" alt="Logo" routerLink="/" />
+  </div>
+  <nav class="navbar">
+    <ul class="nav-links">
+      <li><a routerLink="/account">Account</a></li>
+      <li><a routerLink="/listing">Listings</a></li>
+      <li><a routerLink="/chat">Chats</a></li>
+    </ul>
+    <div class="burger" (click)="toggleMenu()">
+      <div class="line"></div>
+      <div class="line"></div>
+      <div class="line"></div>
+    </div>
+  </nav>
+</header>

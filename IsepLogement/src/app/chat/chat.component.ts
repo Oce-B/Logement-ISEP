@@ -18,8 +18,7 @@ export class ChatComponent {
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit() {
-    const id = +this.route.snapshot.paramMap.get('id')!; // Get the listing ID from the route parameter
-
+    const id = +this.route.snapshot.paramMap.get('id')!;
     for (var chat of MOCK_CHATS) {
       if (chat.id === id) {
         this.chat = chat;
@@ -27,13 +26,11 @@ export class ChatComponent {
       }
     }
     console.log(this.chat);
-    // this.messages = this.chat.messages;
   }
 
   sendMessage(message: string) {
     if (message.trim() !== '') {
       this.messages!.push({ user: this.currentUser, content: message });
-      // Here you can also send the message to a backend service to save it
     }
     message = '';
   }
