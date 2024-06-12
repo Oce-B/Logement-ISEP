@@ -11,7 +11,7 @@ const chatSchema = new mongoose.Schema(
     messages: [messageSchema],
   },
   { collection: "chat" }
-); // Explicitly specify the collection name
+);
 
 const Chat = mongoose.model("Chat", chatSchema);
 
