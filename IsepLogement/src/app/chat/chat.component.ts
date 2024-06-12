@@ -1,37 +1,45 @@
-import { Component, Input } from '@angular/core';
-import { HeaderComponent } from '../header/header.component';
-import { Chat, Message } from '../chat.interface';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MOCK_CHATS } from '../mock-messages';
+import { Chat, Message } from '../chat.interface';
+import { ChatService } from '../chat.service';
+import { HeaderComponent } from '../header/header.component';
+
 @Component({
   selector: 'app-chat',
   standalone: true,
   imports: [HeaderComponent],
   templateUrl: './chat.component.html',
-  styleUrl: './chat.component.scss',
+  styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent {
-  chat!: Chat;
+export class ChatComponent implements OnInit {
+  chat: Chat = { id: 0, messages: [] };
   currentUser: string = 'User1';
-  messages?: Message[];
+  messages: Message[] = [];
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private chatService: ChatService
+  ) {}
 
   ngOnInit() {
     const id = +this.route.snapshot.paramMap.get('id')!;
-    for (var chat of MOCK_CHATS) {
-      if (chat.id === id) {
-        this.chat = chat;
-        this.messages = chat.messages;
-      }
-    }
-    console.log(this.chat);
+    this.chatService.getChatById(id).subscribe((chat) => {
+      this.chat = chat;
+      this.messages = chat.messages;
+    });
   }
 
   sendMessage(message: string) {
     if (message.trim() !== '') {
-      this.messages!.push({ user: this.currentUser, content: message });
+      this.chatService
+        .addMessage(this.chat.id, {
+          sender: this.currentUser,
+          content: message,
+        })
+        .subscribe((updatedChat) => {
+          this.chat = updatedChat;
+          this.messages = updatedChat.messages;
+        });
     }
-    message = '';
   }
 }

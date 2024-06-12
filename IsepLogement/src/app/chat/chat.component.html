@@ -1,8 +1,8 @@
 <app-header></app-header>
 <div class="sender--name">User {{ this.chat.id }}</div>
 
-<div class="message-containe">
-  @for(message of this.messages; track $index){ @if(message.user ===
+<div class="message-container">
+  @for(message of this.messages; track $index){ @if(message.user ==
   this.currentUser){
 
   <div class="message message--sent">
