@@ -1,6 +1,9 @@
-<input
-  type="text"
-  [(ngModel)]="searchTerm"
-  (input)="onSearchChange()"
-  placeholder="Search..."
-/>
+<div class="search">
+  <input
+    class="search__input"
+    type="text"
+    [(ngModel)]="searchTerm"
+    (input)="onSearchChange()"
+    placeholder="Search..."
+  />
+</div>

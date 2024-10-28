@@ -1,5 +1,7 @@
 <div class="chat-card">
-  <h3>User {{ chat.id }}</h3>
-  <p>{{ chat.messages[0].content.substring(0, 50) }}....</p>
-  <a routerLink="/chat/{{ chat.id }}">See the chat</a>
+  <h3 class="chat-card__title">User {{ chat.id }}</h3>
+  <p class="chat-card__message">
+    {{ chat.messages[0].content.substring(0, 50) }}...
+  </p>
+  <a class="chat-card__link" routerLink="/chat/{{ chat.id }}">See the chat</a>
 </div>

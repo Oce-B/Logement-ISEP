@@ -1,7 +1,47 @@
 <app-header></app-header>
-<h2>{{ listing.title }}</h2>
-<p>{{ listing.description }}</p>
-<!-- Display all other listing details here -->
-
-<button (click)="saveListing()">Save Listing</button>
-<button (click)="hideListing()">Hide Listing</button>
+<div class="listing-details">
+  <h2 class="listing-details__title">{{ listing.title }}</h2>
+  <div class="listing-details__pictures">
+    @for(picture of listing.pictures; track $index){
+    <img [src]="picture" alt="Listing Image" class="listing-details__image" />
+    }
+  </div>
+  <div class="listing-details__info">
+    <p class="listing-details__item">
+      <strong>Description:</strong> {{ listing.description }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Exclusive Offer:</strong>
+      {{ listing.exclusiveOffer ? "Yes" : "No" }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Author:</strong> {{ listing.author }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Roommates:</strong> {{ listing.roommates.join(", ") || "None" }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Number of Rooms:</strong> {{ listing.numberOfRooms }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Surface Area:</strong> {{ listing.surface }} m²
+    </p>
+    <p class="listing-details__item">
+      <strong>City:</strong> {{ listing.city }}
+    </p>
+    <p class="listing-details__item">
+      <strong>Postal Code:</strong> {{ listing.postalCode }}
+    </p>
+  </div>
+  <div class="listing-details__actions">
+    <button (click)="saveListing()" class="listing-details__button">
+      Save Listing
+    </button>
+    <button
+      (click)="hideListing()"
+      class="listing-details__button listing-details__button--hide"
+    >
+      Hide Listing
+    </button>
+  </div>
+</div>

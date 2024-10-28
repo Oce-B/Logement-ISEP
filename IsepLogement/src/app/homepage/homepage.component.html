@@ -1,11 +1,8 @@
-<app-header></app-header>
-<app-search (searchChange)="onSearch($event)"></app-search>
-<div class="listing-cards">
-  @if(!searchTerm){ @for(listing of this.visibleListings; track $index){
-  <app-listing-card [listing]="listing"></app-listing-card>
-
-  }} @else { @for(listing of this.getfilteredListings(); track $index){
-  <app-listing-card [listing]="listing"></app-listing-card>
-
-  }}
+<!-- homepage.component.html -->
+<div class="homepage-container">
+  <img src="assets/logo.svg" alt="Logo" class="logo" />
+  <img src="assets/pizza.svg" alt="SVG Image" class="svg-image" />
+  <h1>Welcome to IsepLogement!</h1>
+  <p>Discover your dream home today.</p>
+  <a routerLink="/listing" class="btn btn-primary">View Listings</a>
 </div>
